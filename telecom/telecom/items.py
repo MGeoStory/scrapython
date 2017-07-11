@@ -23,3 +23,12 @@ class TFNStoreItem(scrapy.Item):
     address = scrapy.Field()
     lat = scrapy.Field()
     lng = scrapy.Field()
+
+class FETStoreItem(scrapy.Item):
+    storeType = scrapy.Field()
+    name = scrapy.Field()
+    address = scrapy.Field()
+    city = scrapy.Field()
+    county = scrapy.Field()
+    lat = scrapy.Field()
+    lng = scrapy.Field()
