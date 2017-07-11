@@ -1,7 +1,8 @@
 import scrapy
-from telecom.items import TFNStoreItem
+from telecom.items import FETStoreItem
 import json
 import random
+
 
 class TFN_Spider(scrapy.Spider):
     # response.xpath('//*[@id="wrapper"]/section/div[2]/div/div/div/div/div/d
@@ -75,23 +76,32 @@ class TFN_Spider(scrapy.Spider):
         #             self.parse,
         #             method='POST'
         #         )
-        for i in range(0, 1):
-            print(cities[i])
+        for i in range(0, len(cities)):
             print('===============================')
-            for j in range(0, 1):
+            for j in range(0, len(areas[i])):
                 yield scrapy.Request(
                     'https://ecare.fetnet.net/eServiceV3/storeSearchController/ShopCenterSearchFilter.action?city=' +
                     cities[i] + '&area=' + areas[i][j],
                     self.parse,
                     method='POST'
                 )
+                
         custom_settings = {
-            'DOWNLOAD_DELAY' : random.randint(1, 10) * 0.25,
+            'DOWNLOAD_DELAY': random.randint(1, 10) * 0.25,
         }
 
     def parse(self, response):
         json_respone = json.loads(response.text)
         datas = json_respone['result']['datas']
-        print(datas[0])
-        
+        for i in range(len(datas)):
+            item = FETStoreItem()
+            # print(datas[i]['storeType'])
+            item['storeType'] = datas[i]['storeType']
+            item['name'] = datas[i]['storeName']
+            item['address'] = datas[i]['storeAddress']
+            item['lat'] = datas[i]['storeLongitude']
+            item['lng'] = datas[i]['storeLatitude']
+            item['city'] = datas[i]['storeCity']
+            item['county'] = datas[i]['storeArea']
+            yield item
         print('===============================')
