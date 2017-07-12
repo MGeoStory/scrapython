@@ -32,3 +32,11 @@ class FETStoreItem(scrapy.Item):
     county = scrapy.Field()
     lat = scrapy.Field()
     lng = scrapy.Field()
+
+class APTStoreItem(scrapy.Item):
+    storeType = scrapy.Field()
+    name = scrapy.Field()
+    address = scrapy.Field()
+    city = scrapy.Field()
+    county = scrapy.Field()
+    lonlat = scrapy.Field()

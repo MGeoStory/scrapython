@@ -4,7 +4,7 @@ import json
 import random
 
 
-class TFN_Spider(scrapy.Spider):
+class FET_Spider(scrapy.Spider):
     # response.xpath('//*[@id="wrapper"]/section/div[2]/div/div/div/div/div/d
     # ...: iv[1]/div[2]/input[1]/@value').re('\w+') to get counties
 
