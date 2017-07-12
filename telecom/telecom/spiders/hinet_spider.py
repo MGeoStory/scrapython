@@ -37,7 +37,7 @@ class HinetSpider(scrapy.Spider):
             item = HinetStoreItem()
             item['code'] = county + town
             item['storeType'] = result.css('h4::text').re('\w+')[i]
-            item['name'] = result.css('h5::text').re('\w+')[i]
+            item['name'] = result.css('h5::text').re('\D[\w\D]+')[i]
             item['address'] = result.xpath(
-                '//td[contains(@class,"address")]/text()').re('[^\d\s]+\w+\-?\w+')[i]
+                '//td[contains(@class,"address")]/text()').re('[^\d\s]+[\w]+\-?\w+\D?\w+')[i]
             yield item
