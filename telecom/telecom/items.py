@@ -40,3 +40,9 @@ class APTStoreItem(scrapy.Item):
     city = scrapy.Field()
     county = scrapy.Field()
     lonlat = scrapy.Field()
+
+class TstarStoreItem(scrapy.Item):
+    storeType = scrapy.Field()
+    name = scrapy.Field()
+    address = scrapy.Field()
+    latlng = scrapy.Field()
