@@ -62,11 +62,13 @@ class TSTAR_Spider(scrapy.Spider):
             ]
 
             areas = []
-            for i in range(0,len(list_of_county)):
+            for i in range(0,2):
+            # for i in range(0,len(list_of_county)):
                 cty = re.findall('value="(\w+)"',list_of_county[i])
                 areas.append(cty)
-            
-            for i in range(0, len(cities)):
+
+            for i in range(0,2):
+            # for i in range(0, len(cities)):
                 # print('===============================')
                 # print(i)
                 # print(cities[i])
@@ -94,6 +96,7 @@ class TSTAR_Spider(scrapy.Spider):
         
             item['name'] = json_response[i]['locationName']
             item['address'] = json_response[i]['storeAddress']
-            item['latlng'] = json_response[i]['latlng']
+            item['lat'] = str(json_response[i]['latlng']).split(',')[0]
+            item['lng'] = str(json_response[i]['latlng']).split(',')[1]
             yield item
         print('===============================')

@@ -9,9 +9,9 @@ import re
 class APT_Spider(scrapy.Spider):
 
     name = 'apt'
-    custom_settings = {
-        'DOWNLOAD_DELAY': random.randint(1, 10) * 0.25,
-    }
+    # custom_settings = {
+    #     'DOWNLOAD_DELAY': random.randint(1, 10) * 0.25,
+    # }
 
     def start_requests(self):
             cities = [
@@ -94,7 +94,8 @@ class APT_Spider(scrapy.Spider):
             item['storeType'] = json_response[i]['tags'][0]
             item['name'] = json_response[i]['name']
             item['address'] = json_response[i]['address']
-            item['lonlat'] = json_response[i]['lonlat']
+            item['lng'] = str(json_response[i]['lonlat']).split(',')[0]
+            item['lat'] = str(json_response[i]['lonlat']).split(',')[1]
             item['city'] = json_response[i]['city']
             item['county'] = json_response[i]['district']
             yield item
