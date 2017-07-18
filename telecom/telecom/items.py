@@ -8,14 +8,16 @@
 import scrapy
 
 
-
 class HinetStoreItem(scrapy.Item):
     # define the fields for your item here like:
     code = scrapy.Field()
     name = scrapy.Field()
     storeType = scrapy.Field()
-    address= scrapy.Field()
+    address = scrapy.Field()
+    lat = scrapy.Field()
+    lng = scrapy.Field()
     # pass
+
 
 class TFNStoreItem(scrapy.Item):
     storeType = scrapy.Field()
@@ -23,6 +25,7 @@ class TFNStoreItem(scrapy.Item):
     address = scrapy.Field()
     lat = scrapy.Field()
     lng = scrapy.Field()
+
 
 class FETStoreItem(scrapy.Item):
     storeType = scrapy.Field()
@@ -33,6 +36,7 @@ class FETStoreItem(scrapy.Item):
     lat = scrapy.Field()
     lng = scrapy.Field()
 
+
 class APTStoreItem(scrapy.Item):
     storeType = scrapy.Field()
     name = scrapy.Field()
@@ -41,6 +45,7 @@ class APTStoreItem(scrapy.Item):
     county = scrapy.Field()
     lng = scrapy.Field()
     lat = scrapy.Field()
+
 
 class TstarStoreItem(scrapy.Item):
     storeType = scrapy.Field()

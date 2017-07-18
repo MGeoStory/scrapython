@@ -62,13 +62,13 @@ class TSTAR_Spider(scrapy.Spider):
             ]
 
             areas = []
-            for i in range(0,2):
-            # for i in range(0,len(list_of_county)):
+            # for i in range(0,2):
+            for i in range(0,len(list_of_county)):
                 cty = re.findall('value="(\w+)"',list_of_county[i])
                 areas.append(cty)
 
-            for i in range(0,2):
-            # for i in range(0, len(cities)):
+            # for i in range(0,2):
+            for i in range(0, len(cities)):
                 # print('===============================')
                 # print(i)
                 # print(cities[i])
